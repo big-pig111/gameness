@@ -1,3 +1,12 @@
+/* 确保 html 和 body 元素占满整个视口，且无默认边距和滚动条 */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -5,16 +14,20 @@ body {
     overflow: hidden;
 }
 
+/* #app 元素铺满整个屏幕 */
 #app {
     position: relative;
-    margin: 10px auto;
+    width: 100%;
+    height: 100%;
+    margin: 0;
     background: #222;
     font-size: 14px;
-    box-shadow: 5px 5px 10px -5px #000;
-    border-radius: 5px;
+    box-shadow: none; /* 移除可能影响布局的阴影 */
+    border-radius: 0;
     overflow: hidden;
 }
 
+/* 确保 logo 元素相对布局合理 */
 #logo {
     pointer-events: none;
     position: relative;
@@ -33,6 +46,7 @@ body {
     width: 6%;
 }
 
+/* 容器及其子元素铺满屏幕 */
 #container,
 #container>div {
     width: 100%;
@@ -44,6 +58,7 @@ body {
     visibility: hidden;
     text-align: center;
     opacity: 0;
+    box-sizing: border-box; /* 确保内边距包含在元素的宽高内 */
 }
 
 #container>div.action {
@@ -52,6 +67,7 @@ body {
     transition: all 0.2s ease;
 }
 
+/* 开始按钮样式 */
 #start-btn p:nth-child(2) {
     display: none;
 }
@@ -64,118 +80,19 @@ body {
     display: block;
 }
 
+/* 游戏区域背景铺满 */
 #play {
     background: url('../img/background-1.jpg');
-    background-size: 100% 100%;
+    background-size: cover; /* 背景图覆盖整个元素 */
+    background-position: center; /* 背景图居中显示 */
+    background-repeat: no-repeat; /* 背景图不重复 */
 }
 
+/* 画布铺满屏幕 */
 #canvas {
     z-index: 3;
     pointer-events: none;
-}
-
-.content {
     width: 100%;
     height: 100%;
-}
-
-.content .header {
-    user-select: none;
-    display: flex;
-    justify-content: space-between;
-}
-
-.content .header ul {
-    width: 45%;
-    height: 50px;
-    font-size: 20px;
-}
-
-.content .header li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-}
-
-.content .header ul,
-.content .header ul li {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.content .header .option img {
-    cursor: pointer;
-}
-
-.content .header .option img:nth-child(2) {
-    display: none;
-}
-
-.content .header .option li:active {
-    opacity: 0.5;
-}
-
-.content .header .option li.active img:nth-child(1) {
-    display: none;
-}
-
-.content .header .option li.active img:nth-child(2) {
-    display: block;
-}
-
-#over .message {
-    margin-left: 29%;
-    width: 71%;
-    display: flex;
-}
-
-#over .message img {
-    width: 30px;
-    height: 30px;
-}
-
-#over .message span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 70px;
-    width: 20%;
-}
-
-#over .message span:nth-last-child(1) {
-    width: 60%;
-    padding-left: 4%;
-    justify-content: space-between;
-}
-
-#over input {
-    border: none;
-    border-radius: 3px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 1rem;
-    width: 35%;
-    margin: 0 auto;
-    height: 30px;
-}
-
-table {
-    height: 80%;
-    overflow: hidden;
-}
-
-footer{
-    flex: 1;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 10px;
-    color: #333;
-    font-size: .8rem;
-    opacity: 0.8;
-}
-footer a{
-    color: inherit;
-    text-decoration: none;
-}
+    object-fit: cover; /* 确保画布内容覆盖整个区域 */
+}    
