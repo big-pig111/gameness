@@ -2,21 +2,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: rgba(255,0,0,0);
-    -webkit-appearance:none;
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+    -webkit-appearance: none;
 }
 
-html,body{
+html,
+body {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* 新增：禁止 html 和 body 元素出现滚动条 */
+    overflow: hidden; /* 禁止出现滚动条 */
 }
 
-li{
+li {
     list-style-type: none;
 }
 
-.column{
+.column {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -28,7 +29,8 @@ li{
     margin: 0 auto;
     text-align: justify;
 }
-.pre{
+
+.pre {
     white-space: pre-line;
 }
 
@@ -51,17 +53,20 @@ li{
     cursor: pointer;
     overflow: hidden;
 }
-.btn:disabled{
+
+.btn:disabled {
     opacity: 0.6;
 }
-.btn:active{
+
+.btn:active {
     -webkit-box-shadow: 0px 2px 0px #84261a;
     -moz-box-shadow: 0px 2px 0px #84261a;
     box-shadow: 0px 2px 0px #84261a;
-    position:relative;
-    top:7px;
+    position: relative;
+    top: 7px;
 }
-.btn::after{
+
+.btn::after {
     content: '';
     position: absolute;
     top: 0;
@@ -73,58 +78,54 @@ li{
     margin: auto;
     border-radius: 50%;
     transition: all 0.5s ease;
-    background:rgba(255,255,0,0.5);
+    background: rgba(255, 255, 0, 0.5);
 }
-.btn:active::after{
+
+.btn:active::after {
     width: 100%;
     padding-bottom: 100%;
 }
 
-.absolute{
+.absolute {
     position: absolute;
     top: 0;
     left: 0;
 }
 
-.scroll tbody {
-    display: block;
-    height: 100%;
-    overflow-y: scroll;
-    padding-bottom: 8px;
-    /* 修改：确保表格内容不溢出 */
-    max-height: calc(100vh - [这里需要根据实际情况填写顶部和底部元素的高度总和]); 
-}
-
-.scroll tbody::-webkit-scrollbar{
-    width: 1px;
-}
-
-.scroll thead,
-tbody tr {
-    display: table;
+.scroll {
     width: 100%;
-    table-layout: fixed;
-}
-
-tbody tr {
-    height: 45px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .scroll thead {
-    width: calc(100% - 2px);
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}
+
+.scroll tbody {
+    flex: 1; /* 让 tbody 占据剩余的空间 */
+    display: block;
+    overflow-y: auto; /* 当内容超出时显示滚动条 */
+    padding-bottom: 8px;
+    max-height: 100vh; /* 最大高度为视口高度 */
 }
 
 .scroll tbody::-webkit-scrollbar {
-    width:2px;
+    width: 2px;
 }
+
 /* 滚动槽 */
 .scroll tbody::-webkit-scrollbar-track {
-    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius:10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }
+
 /* 滚动条滑块 */
 .scroll tbody::-webkit-scrollbar-thumb {
-    border-radius:10px;
-    background:rgba(255,255,255,0.5);
-    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }    
