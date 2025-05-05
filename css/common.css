@@ -9,6 +9,7 @@
 html,body{
     width: 100%;
     height: 100%;
+    overflow: hidden; /* 新增：禁止 html 和 body 元素出现滚动条 */
 }
 
 li{
@@ -90,6 +91,8 @@ li{
     height: 100%;
     overflow-y: scroll;
     padding-bottom: 8px;
+    /* 修改：确保表格内容不溢出 */
+    max-height: calc(100vh - [这里需要根据实际情况填写顶部和底部元素的高度总和]); 
 }
 
 .scroll tbody::-webkit-scrollbar{
@@ -113,15 +116,15 @@ tbody tr {
 
 .scroll tbody::-webkit-scrollbar {
     width:2px;
-    }
-    /* 滚动槽 */
+}
+/* 滚动槽 */
 .scroll tbody::-webkit-scrollbar-track {
     -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.3);
     border-radius:10px;
 }
-    /* 滚动条滑块 */
+/* 滚动条滑块 */
 .scroll tbody::-webkit-scrollbar-thumb {
     border-radius:10px;
     background:rgba(255,255,255,0.5);
     -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.5);
-}
+}    
